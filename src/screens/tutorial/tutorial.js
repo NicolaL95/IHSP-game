@@ -1,7 +1,7 @@
 import React from 'react'
 
 //STYLE
-import '../tutorial/tutorial.css'
+import '../tutorial/Tutorial.css'
 
 function tutorial(){
     return(
