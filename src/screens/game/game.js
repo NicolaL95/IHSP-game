@@ -2,12 +2,12 @@ import React from 'react'
 
 //STYLE
 import '../game/Game.css'
-
-function game(){
-    return(
+import GameTable from '../../components/classComponents/GameTable'
+function Game() {
+    return (
         <>
+            <GameTable />
         </>
     )
 }
-
-export default game
+export default Game

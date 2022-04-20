@@ -1,3 +1,4 @@
+import { waitFor } from '@testing-library/dom'
 import React from 'react'
 
 //Style
@@ -18,6 +19,5 @@ function UiButton(props) {
     )
 
 }
-
 
 export default UiButton
