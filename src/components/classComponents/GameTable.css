@@ -1,22 +1,46 @@
-.game_container{
+.game_container {
     background-image: url('../../assets/images/office_background.png');
     height: 100vh;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
+    width: 100vw;
+    background-position: center;
+    background-repeat: repeat-x;
+    background-size: cover;
+    position: relative;
+    animation: animate 3s reverse infinite linear;
+    overflow: hidden;
 }
 
-.score{
+.parallax {
+    background-image: url('../../assets/images/parallax.png');
+    background-repeat: repeat-x;
+    background-position-y: 40px;
+    animation: parallax_animation 8s reverse infinite linear;
+}
+
+.score {
     position: absolute;
-        color: white;
-        margin-left: 15px;
-        font-size: 30px;
+    color: white;
+    margin-left: 15px;
+    font-size: 30px;
 }
 
-.game_over{
+.game_over {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%)
+}
+
+
+@keyframes animate {
+    100% {
+        background-position: 900px
+    }
+}
+
+
+@keyframes parallax_animation {
+    100% {
+        background-position: 900px
+    }
 }

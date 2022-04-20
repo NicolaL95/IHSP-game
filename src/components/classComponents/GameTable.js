@@ -54,20 +54,21 @@ class GameTable extends Component {
     render() {
 
         return (
-            <div onClick={this.fly} className='game_container'>
-                {!this.state.gameOver ? <>
-                    <div className='score'>
-                        <p>{this.state.score}</p>
-                    </div>
-                    <Character
-                        x={this.state.xAxis}
-                        y={this.state.yAxis}
-                    />
-                </> : <p className='game_over'>Game Over</p>}
+            <div className="parallax">
+                <div onClick={this.fly} className='game_container'>
+                    {!this.state.gameOver ? <>
+                        <div className='score'>
+                            <p>{this.state.score}</p>
+                        </div>
+                        <Character
+                            x={this.state.xAxis}
+                            y={this.state.yAxis}
+                        />
+                    </> : <p className='game_over'>Game Over</p>}
 
 
+                </div>
             </div>
-
 
         )
     }
