@@ -1,0 +1,22 @@
+.game_container{
+    background-image: url('../../assets/images/office_background.png');
+    height: 100vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+}
+
+.score{
+    position: absolute;
+        color: white;
+        margin-left: 15px;
+        font-size: 30px;
+}
+
+.game_over{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
