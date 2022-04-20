@@ -15,7 +15,7 @@ const SpriteCharacter = styled.div`
   left: ${props => props.x}px;
   transform: translate(-50%, -50%);
   background: url(${Sprite}) left center;
-  animation: ${animation} .6s steps(4) ; 
+  animation: ${animation} .6s steps(4) infinite; 
 `;
 
 export default SpriteCharacter

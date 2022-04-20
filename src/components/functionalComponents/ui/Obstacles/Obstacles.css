@@ -1,0 +1,8 @@
+.obstacles_container{
+    position: absolute;
+    height: 55px;
+    width: 100px;
+    background-color: black;
+    bottom: 150px;
+    left: 700px;
+}

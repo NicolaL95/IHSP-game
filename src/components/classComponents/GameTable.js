@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Character from '../functionalComponents/ui/Character/Character'
+import Obstacles from '../functionalComponents/ui/Obstacles/Obstacles'
 import './GameTable.css'
-import { gravityMagnitude } from '../../utils/utils'
+import ost from '../../assets/audio/ostDoom.mp3'
 class GameTable extends Component {
     constructor(props) {
         super(props);
@@ -9,17 +10,31 @@ class GameTable extends Component {
             xAxis: 150,
             yAxis: 50,
             score: 0,
-            gameOver: false
+            gameOver: false,
+            showMenace: false
         }
-        this.setScore = 0
+        this.setScore = 0;
+        this.startMenace = null;
+        this.probabilityToSpawn = 5;
+
     }
 
     componentDidMount() {
+        new Audio(ost).play();
         this.setScore = setInterval(() => {
             this.setState({
                 score: this.state.score + 1
             })
         }, 20)
+        this.startMenace = setInterval(() => {
+            let randomNumber = Math.floor(Math.random() * this.probabilityToSpawn);
+            if (randomNumber == 1) {
+                this.state.showMenace = true;
+            }
+            else {
+                this.state.showMenace = false;
+            }
+        }, 1000)
         /*  setInterval(() => {
              const MAGNITUDE = 3
              let yCurrent = this.state.yAxis - MAGNITUDE
@@ -63,8 +78,12 @@ class GameTable extends Component {
                         <Character
                             x={this.state.xAxis}
                             y={this.state.yAxis}
+
                         />
-                    </> : <p className='game_over'>Game Over</p>}
+                        {this.state.showMenace ? <Obstacles /> : ''}
+
+                    </>
+                        : <p className='game_over'>Game Over</p>}
 
 
                 </div>
