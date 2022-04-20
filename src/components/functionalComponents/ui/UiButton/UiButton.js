@@ -7,7 +7,7 @@ import '../UiButton/UiButton.css'
 function UiButton(props) {
 
     function buttonClick(e) {
-        return props.callback(e.target.path)
+        return props.callback(props.path)
     }
 
 
