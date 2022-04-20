@@ -1,7 +1,7 @@
 import React from 'react'
 
 //STYLE
-import '../game/game.css'
+import '../game/Game.css'
 
 function game(){
     return(
