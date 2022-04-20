@@ -1,7 +1,7 @@
 import React from 'react'
 
 //STYLE
-import '../leaderboard/leaderboard.css'
+import '../leaderboard/Leaderboard.css'
 
 function leaderboard(){
     return(
