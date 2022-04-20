@@ -1,11 +1,16 @@
 import React from 'react'
 
 //STYLE
-import '../welcome/welcome.css'
+import '../welcome/Welcome.css'
 
-function welcome(){
-    return(
+function welcome() {
+    return (
         <>
+            <header></header>
+            <main>
+
+            </main>
+            <footer></footer>
         </>
     )
 }
