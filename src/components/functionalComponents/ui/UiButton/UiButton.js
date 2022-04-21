@@ -13,7 +13,7 @@ function UiButton(props) {
 
 
     return (
-        <div onClick={buttonClick} path={props.path} className="button">
+        <div onClick={buttonClick} path={props.path} className={props.className}>
             {props.label}
         </div>
     )

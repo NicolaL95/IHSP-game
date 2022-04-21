@@ -1,8 +1,19 @@
-.button {
+.bottoneWelcome {
     text-align: center;
     line-height: 35px;
     background-color: rgb(255, 187, 0);
     width: 100px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+
+.bottoneGameOver {
+    text-align: center;
+    line-height: 35px;
+    background-color: rgb(255, 187, 0);
+    width: 200px;
     height: 40px;
     font-size: 20px;
     border-radius: 10px;

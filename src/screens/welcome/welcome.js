@@ -27,12 +27,14 @@ function Welcome() {
                             label={'Gioca'}
                             path={"/game"}
                             callback={goToPage}
+                            className='bottoneWelcome'
                         />
 
                         <UiButton
                             label={'Score'}
                             path={"/leaderboard"}
-                            callback={goToPage} />
+                            callback={goToPage}
+                            className='bottoneWelcome' />
 
                     </div>
                 </main>
