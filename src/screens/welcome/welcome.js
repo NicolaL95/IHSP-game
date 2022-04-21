@@ -12,7 +12,10 @@ function Welcome() {
         navigate(path)
     }
     return (
-        <div className='test'>
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center'
+        }}>
             <div className='container'>
                 <header></header>
                 <main>
