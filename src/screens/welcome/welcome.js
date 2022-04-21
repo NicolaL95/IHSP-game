@@ -12,9 +12,8 @@ function Welcome() {
         navigate(path)
     }
     return (
-        <>
+        <div className='test'>
             <div className='container'>
-
                 <header></header>
                 <main>
                     <div className='title_container'>
@@ -29,7 +28,7 @@ function Welcome() {
                             path={"/game"}
                             callback={goToPage}
                         />
-                        
+
                         <UiButton
                             label={'Score'}
                             path={"/leaderboard"}
@@ -39,7 +38,7 @@ function Welcome() {
                 </main>
                 <footer>NLD production, all right reserved</footer>
             </div>
-        </>
+        </div>
     )
 }
 
