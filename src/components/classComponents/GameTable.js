@@ -20,6 +20,7 @@ class GameTable extends Component {
             xAxisM: 650,
             hp: 3
         }
+        this.gameHasStarted = false;
         this.setScore = 0;
         this.startMenace = null;
         this.probabilityToSpawn = 2;
@@ -31,6 +32,7 @@ class GameTable extends Component {
 
     componentDidMount() {
         /* new Audio(ost).play(); */
+
         this.setScore = setInterval(() => {
             this.setState({
                 score: this.state.score + 1
@@ -110,7 +112,6 @@ class GameTable extends Component {
                 yAxis: yCurrent
             })
         }, 20)
-
     }
 
 
@@ -150,7 +151,7 @@ class GameTable extends Component {
 
     goToPage = (path) => {
         console.log(path)
-        this.props.navigate(path)
+        this.props.router.navigate(path)
     }
 
 
@@ -187,7 +188,8 @@ class GameTable extends Component {
 
                                     <UiButton label={'Torna al menù'}
                                         path={"/"}
-                                        callback={this.goToPage} />
+                                        callback={this.goToPage}
+                                        className='bottoneGameOver' />
                                 </div>
                             </div>
                         }
