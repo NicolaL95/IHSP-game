@@ -9,8 +9,8 @@
     background-position: center;
     background-size: cover;
     position: absolute;
-    height: 390px;
-    width: 100vw;
+    height: 350px;
+    width: 650px;
     animation: rotate 4s infinite linear
 }
 
