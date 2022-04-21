@@ -35,13 +35,15 @@ class GameTable extends Component {
                 this.state.showMenace = false;
             }
         }, 1000)
-        /* setInterval(() => {
+
+/*         setInterval(() => {
             const MAGNITUDE = 3
             let yCurrent = this.state.yAxis - MAGNITUDE
             this.setState({
                 yAxis: yCurrent
             })
         }, 20) */
+
     }
 
 
