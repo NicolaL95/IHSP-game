@@ -35,13 +35,13 @@ class GameTable extends Component {
                 this.state.showMenace = false;
             }
         }, 1000)
-        setInterval(() => {
+        /* setInterval(() => {
             const MAGNITUDE = 3
             let yCurrent = this.state.yAxis - MAGNITUDE
             this.setState({
                 yAxis: yCurrent
             })
-        }, 20)
+        }, 20) */
     }
 
 
@@ -80,7 +80,7 @@ class GameTable extends Component {
     render() {
 
         return (
-            <div className='container'>
+            <div className='container_game'>
                 <h1>IHSP-Game</h1>
                 <div className="parallax">
                     <div onClick={this.fly} className='game_container'>
