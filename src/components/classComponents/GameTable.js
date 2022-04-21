@@ -57,7 +57,7 @@ class GameTable extends Component {
 
                     const rangeYMenace = [...Array((this.state.yAxisM + 20) - (this.state.yAxisM - 20) + 1).keys()].map(x => x + (this.state.yAxisM - 20))
 
-                    const rangeYChar = [...Array((this.state.yAxis + 55) - (this.state.yAxis - 55) + 1).keys()].map(x => x + (this.state.yAxis - 55))
+                    const rangeYChar = [...Array((this.state.yAxis + 10) - (this.state.yAxis - 10) + 1).keys()].map(x => x + (this.state.yAxis - 10))
 
                     const foundX = rangeXChar.some(r => rangeXMenace.indexOf(r) >= 0)
                     const foundY = rangeYChar.some(r => rangeYMenace.indexOf(r) >= 0)
