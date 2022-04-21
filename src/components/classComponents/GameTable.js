@@ -11,12 +11,15 @@ class GameTable extends Component {
             yAxis: 150,
             score: 0,
             gameOver: false,
-            showMenace: false
+            showMenace: false,
+            yAxisM: 150,
+            xAxisM: 650
         }
         this.setScore = 0;
         this.startMenace = null;
-        this.probabilityToSpawn = 5;
+        this.probabilityToSpawn = 2;
         this.isJumping = false;
+        this.menaceisOnScrenn = false;
     }
 
     componentDidMount() {
@@ -27,9 +30,37 @@ class GameTable extends Component {
             })
         }, 20)
         this.startMenace = setInterval(() => {
+            if (this.menaceisOnScrenn == true) {
+                console.log('sono qui')
+                return
+            }
             let randomNumber = Math.floor(Math.random() * this.probabilityToSpawn);
             if (randomNumber == 1) {
+                this.menaceisOnScrenn = true;
+                let yAxisMenace = Math.random() * (280 - 25) + 25;
+                this.setState({
+                    yAxisM: yAxisMenace
+                })
                 this.state.showMenace = true;
+                const menaceAttack = setInterval(() => {
+                    let xAxisM = this.state.xAxisM
+                    xAxisM = xAxisM - 1
+                    this.setState({
+                        xAxisM: xAxisM
+                    })
+
+                    if (this.state.xAxis == this.state.xAxisM) {
+                        console.log('gameover')
+                    }
+
+                    if (xAxisM == -80) {
+                        this.menaceisOnScrenn = false;
+                        clearInterval(menaceAttack)
+                        this.setState({
+                            xAxisM: 650
+                        })
+                    }
+                }, 1)
             }
             else {
                 this.state.showMenace = false;
@@ -94,7 +125,10 @@ class GameTable extends Component {
 
                             />
 
-                            <Obstacles />
+                            <Obstacles
+                                y={this.state.yAxisM}
+                                x={this.state.xAxisM}
+                            />
 
 
                         </>
