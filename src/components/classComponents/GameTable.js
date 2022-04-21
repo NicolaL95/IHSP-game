@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
+
+//Components
 import Character from '../functionalComponents/ui/Character/Character'
 import Obstacles from '../functionalComponents/ui/Obstacles/Obstacles'
 import UiButton from '../functionalComponents/ui/UiButton/UiButton'
 
+//Style
 import './GameTable.css'
-import ost from '../../assets/audio/ostDoom.mp3'
 
+//Audio
+import ost from '../../assets/audio/ostDoom.mp3'
+import jump from '../../assets/audio/jump.mp3'
+import missile from '../../assets/audio/missile.mp3'
+
+//Wrapper
 import withRouter from '../../utils/withNavigation'
+
+
+
 class GameTable extends Component {
     constructor(props) {
         super(props);
@@ -27,16 +38,16 @@ class GameTable extends Component {
         this.isJumping = false;
         this.menaceisOnScrenn = false;
         this.damageRecived = false;
-
     }
 
     componentDidMount() {
         /* new Audio(ost).play(); */
-
         this.setScore = setInterval(() => {
-            this.setState({
-                score: this.state.score + 1
-            })
+            if (this.gameHasStarted) {   //<-- test gameHasStarted
+                this.setState({
+                    score: this.state.score + 1
+                })
+            }
         }, 20)
         this.startMenace = setInterval(() => {
             const rangeXChar = [...Array((this.state.xAxis + 40) - (this.state.xAxis - 40) + 1).keys()].map(x => x + (this.state.xAxis - 40));
@@ -44,7 +55,8 @@ class GameTable extends Component {
                 return
             }
             let randomNumber = Math.floor(Math.random() * this.probabilityToSpawn);
-            if (randomNumber == 1) {
+            if (randomNumber == 1 && this.gameHasStarted) {   //<-- test gameHasStarted
+                /* new Audio(missile).play(); */
                 this.menaceisOnScrenn = true;
                 let yAxisMenace = Math.floor(Math.random() * (280 - 25) + 25);
                 this.setState({
@@ -87,7 +99,6 @@ class GameTable extends Component {
                         })
                     }
 
-
                     if (xAxisM == -80) {
                         this.menaceisOnScrenn = false;
                         this.damageRecived = false;
@@ -102,8 +113,9 @@ class GameTable extends Component {
                 this.state.showMenace = false;
             }
         }, 1000)
+
         setInterval(() => {
-            if (this.isJumping) {
+            if (this.isJumping || !this.gameHasStarted) {  //<-- test gameHasStarted
                 return
             }
             const MAGNITUDE = 3
@@ -129,11 +141,17 @@ class GameTable extends Component {
 
     fly = () => {
 
+        new Audio(jump).play();
+
         let jumpCount = 0
         let incrementedY = this.state.yAxis;
         this.isJumping = true;
 
+        this.gameHasStarted = true;  //<-- test gameHasStarted
+
+
         const jumpingAnimation = setInterval(() => {
+
             incrementedY = incrementedY + 2
             this.setState({
                 yAxis: incrementedY
@@ -150,7 +168,6 @@ class GameTable extends Component {
 
 
     goToPage = (path) => {
-        console.log(path)
         this.props.router.navigate(path)
     }
 
@@ -188,6 +205,11 @@ class GameTable extends Component {
 
                                     <UiButton label={'Torna al menù'}
                                         path={"/"}
+                                        callback={this.goToPage}
+                                        className='bottoneGameOver' />
+
+                                    <UiButton label={'Gioca ancora'}
+                                        path={"/game"}
                                         callback={this.goToPage}
                                         className='bottoneGameOver' />
                                 </div>
