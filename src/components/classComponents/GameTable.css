@@ -36,6 +36,9 @@
     font-size: 30px;
 }
 
+.score p{
+    text-shadow: 3px 1px black;
+}
 
 .game_over {
     position: absolute;

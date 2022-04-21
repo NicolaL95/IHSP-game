@@ -20,6 +20,7 @@ class GameTable extends Component {
         this.probabilityToSpawn = 2;
         this.isJumping = false;
         this.menaceisOnScrenn = false;
+
     }
 
     componentDidMount() {
@@ -30,14 +31,14 @@ class GameTable extends Component {
             })
         }, 20)
         this.startMenace = setInterval(() => {
+            const rangeXChar = [...Array((this.state.xAxis + 40) - (this.state.xAxis - 40) + 1).keys()].map(x => x + (this.state.xAxis - 40));
             if (this.menaceisOnScrenn == true) {
-                console.log('sono qui')
                 return
             }
             let randomNumber = Math.floor(Math.random() * this.probabilityToSpawn);
             if (randomNumber == 1) {
                 this.menaceisOnScrenn = true;
-                let yAxisMenace = Math.random() * (280 - 25) + 25;
+                let yAxisMenace = Math.floor(Math.random() * (280 - 25) + 25);
                 this.setState({
                     yAxisM: yAxisMenace
                 })
@@ -49,9 +50,23 @@ class GameTable extends Component {
                         xAxisM: xAxisM
                     })
 
-                    if (this.state.xAxis == this.state.xAxisM) {
+
+                    const rangeXMenace = [...Array((this.state.xAxisM + 40) - (this.state.xAxisM - 40) + 1).keys()].map(x => x + (this.state.xAxisM - 40));
+
+                    const rangeYMenace = [...Array((this.state.yAxisM + 20) - (this.state.yAxisM - 20) + 1).keys()].map(x => x + (this.state.yAxisM - 20))
+
+                    const rangeYChar = [...Array((this.state.yAxis + 55) - (this.state.yAxis - 55) + 1).keys()].map(x => x + (this.state.yAxis - 55))
+
+                    const foundX = rangeXChar.some(r => rangeXMenace.indexOf(r) >= 0)
+                    const foundY = rangeYChar.some(r => rangeYMenace.indexOf(r) >= 0)
+
+
+                    /* console.log(foundX, foundY) */
+                    if (foundX && foundY) {
                         console.log('gameover')
                     }
+
+                    /* if(this.state.xAxisM - 40) */
 
                     if (xAxisM == -80) {
                         this.menaceisOnScrenn = false;
@@ -60,21 +75,22 @@ class GameTable extends Component {
                             xAxisM: 650
                         })
                     }
-                }, 1)
+                }, 0.5)
             }
             else {
                 this.state.showMenace = false;
             }
         }, 1000)
-
-/*         setInterval(() => {
+        setInterval(() => {
+            if (this.isJumping) {
+                return
+            }
             const MAGNITUDE = 3
             let yCurrent = this.state.yAxis - MAGNITUDE
             this.setState({
                 yAxis: yCurrent
             })
-        }, 20) */
-
+        }, 20)
     }
 
 
@@ -94,6 +110,7 @@ class GameTable extends Component {
 
         let jumpCount = 0
         let incrementedY = this.state.yAxis;
+        this.isJumping = true;
 
         const jumpingAnimation = setInterval(() => {
             incrementedY = incrementedY + 2
@@ -104,6 +121,7 @@ class GameTable extends Component {
             if (jumpCount == 25) {
                 clearInterval(jumpingAnimation)
                 jumpCount = 0;
+                this.isJumping = false;
             }
         }, 10)
 
