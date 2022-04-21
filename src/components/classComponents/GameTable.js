@@ -5,7 +5,8 @@ import UiButton from '../functionalComponents/ui/UiButton/UiButton'
 
 import './GameTable.css'
 import ost from '../../assets/audio/ostDoom.mp3'
-import withNav from '../../utils/withNavigation'
+
+import  withRouter  from '../../utils/withNavigation'
 class GameTable extends Component {
     constructor(props) {
         super(props);
@@ -147,6 +148,12 @@ class GameTable extends Component {
     }
 
 
+    goToPage = (path) => {
+        console.log(path)
+        this.props.navigate(path)
+    }
+
+
     render() {
 
         return (
@@ -178,15 +185,13 @@ class GameTable extends Component {
                                 <div className='gameOver_message'>
                                     <h2>Game Over</h2>
                                     <h4>Beije ti ha silurato</h4>
+
                                     <UiButton label={'Torna al menù'}
                                         path={"/"}
                                         callback={this.goToPage} />
                                 </div>
                             </div>
-
                         }
-
-
                     </div>
                 </div>
             </div>
@@ -194,4 +199,5 @@ class GameTable extends Component {
         )
     }
 }
-export default withNav(GameTable)
+
+export default withRouter(GameTable)
