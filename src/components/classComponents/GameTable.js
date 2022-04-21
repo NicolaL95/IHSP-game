@@ -7,8 +7,8 @@ class GameTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            xAxis: 150,
-            yAxis: 50,
+            xAxis: 85,
+            yAxis: 150,
             score: 0,
             gameOver: false,
             showMenace: false
@@ -16,11 +16,11 @@ class GameTable extends Component {
         this.setScore = 0;
         this.startMenace = null;
         this.probabilityToSpawn = 5;
-
+        this.isJumping = false;
     }
 
     componentDidMount() {
-        new Audio(ost).play();
+        /* new Audio(ost).play(); */
         this.setScore = setInterval(() => {
             this.setState({
                 score: this.state.score + 1
@@ -59,33 +59,49 @@ class GameTable extends Component {
 
     fly = () => {
 
+        let jumpCount = 0
+        let incrementedY = this.state.yAxis;
 
-        let incrementedY = this.state.yAxis + 50;
+        const jumpingAnimation = setInterval(() => {
+            incrementedY = incrementedY + 2
+            this.setState({
+                yAxis: incrementedY
+            })
+            jumpCount = jumpCount + 1
+            if (jumpCount == 25) {
+                clearInterval(jumpingAnimation)
+                jumpCount = 0;
+            }
+        }, 10)
 
-        this.setState({
-            yAxis: incrementedY
-        })
+
+
     }
     render() {
 
         return (
-            <div className="parallax">
-                <div onClick={this.fly} className='game_container'>
-                    {!this.state.gameOver ? <>
-                        <div className='score'>
-                            <p>{this.state.score}</p>
-                        </div>
-                        <Character
-                            x={this.state.xAxis}
-                            y={this.state.yAxis}
+            <div className='container'>
+                <h1>IHSP-Game</h1>
+                <div className="parallax">
+                    <div onClick={this.fly} className='game_container'>
+                        {!this.state.gameOver ? <>
+                            <div className='score'>
+                                <p>{this.state.score}</p>
+                            </div>
+                            <Character
+                                x={this.state.xAxis}
+                                y={this.state.yAxis}
 
-                        />
-                        {this.state.showMenace ? <Obstacles /> : ''}
+                            />
 
-                    </>
-                        : <p className='game_over'>Game Over</p>}
+                            <Obstacles />
 
 
+                        </>
+                            : <p className='game_over'>Game Over</p>}
+
+
+                    </div>
                 </div>
             </div>
 

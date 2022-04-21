@@ -1,3 +1,11 @@
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 .game_container {
     background-image: url('../../assets/images/office_background.png');
     height: 100vh;
@@ -8,13 +16,17 @@
     position: relative;
     animation: animate 3s reverse infinite linear;
     overflow: hidden;
+    height: 350px;
+    width: 650px;
 }
 
 .parallax {
     background-image: url('../../assets/images/parallax.png');
     background-repeat: repeat-x;
     background-position-y: 40px;
-    animation: parallax_animation 8s reverse infinite linear;
+    animation: animate 8s reverse infinite linear;
+    max-height: 350px;
+    max-width: 650px;
 }
 
 .score {
@@ -39,8 +51,8 @@
 }
 
 
-@keyframes parallax_animation {
+/* @keyframes parallax_animation {
     100% {
         background-position: 900px
     }
-}
+} */
