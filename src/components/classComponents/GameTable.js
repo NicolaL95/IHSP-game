@@ -158,7 +158,6 @@ class GameTable extends Component {
 
         return (
             <div className='container_game'>
-                <h1>IHSP-Game</h1>
                 <div className="parallax">
                     <div onClick={this.fly} className='game_container'>
                         {!this.state.gameOver ? <>

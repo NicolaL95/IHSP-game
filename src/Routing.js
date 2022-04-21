@@ -6,10 +6,15 @@ import Game from './screens/game/Game'
 
 function Routing() {
     return (
-        <Routes>
-            <Route index path={routes.HOME} element={<Welcome />} />
-            <Route path={routes.GAME} element={<Game />} />
-        </Routes>
+        <>
+            <h1 style={{
+                textAlign: 'center'
+            }}>IHSP-Game</h1>
+            <Routes>
+                <Route index path={routes.HOME} element={<Welcome />} />
+                <Route path={routes.GAME} element={<Game />} />
+            </Routes>
+        </>
     )
 }
 
