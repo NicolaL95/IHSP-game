@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Character from '../functionalComponents/ui/Character/Character'
 import Obstacles from '../functionalComponents/ui/Obstacles/Obstacles'
+import UiButton from '../functionalComponents/ui/UiButton/UiButton'
+
 import './GameTable.css'
 import ost from '../../assets/audio/ostDoom.mp3'
 class GameTable extends Component {
@@ -141,9 +143,9 @@ class GameTable extends Component {
             }
         }, 10)
 
-
-
     }
+
+
     render() {
 
         return (
@@ -172,8 +174,13 @@ class GameTable extends Component {
 
                         </>
                             : <div className='game_over'>
-                                <h2>Game Over</h2>
-                                <h4>Beije ti ha silurato</h4>
+                                <div className='gameOver_message'>
+                                    <h2>Game Over</h2>
+                                    <h4>Beije ti ha silurato</h4>
+                                    <UiButton label={'Torna al menù'}
+                                        path={"/"}
+                                        callback={this.goToPage} />
+                                </div>
                             </div>
 
                         }
