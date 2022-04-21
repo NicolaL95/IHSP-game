@@ -6,14 +6,15 @@
     background-repeat: repeat-x;
     background-size: cover;
     position: relative;
-    animation: animate 3s reverse infinite linear;
+    animation: slide 3s reverse infinite linear;
     overflow: hidden;
 }
 
 .parallax {
-    background-image: url('../../assets/images/parallax.png');
+    background-image:url('../../assets/images/parallax.png');
     background-repeat: repeat-x;
     background-position-y: 40px;
+    background-position: center;
     animation: parallax_animation 8s reverse infinite linear;
 }
 
@@ -32,9 +33,15 @@
 }
 
 
-@keyframes animate {
+@keyframes slide {
+    0% {
+        background-position: 0px, 0px
+    }
+    50% {
+        background-position: 450px, 450px
+    }
     100% {
-        background-position: 900px
+        background-position: 900px, 900px
     }
 }
 

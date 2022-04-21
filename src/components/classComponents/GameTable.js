@@ -35,14 +35,15 @@ class GameTable extends Component {
                 this.state.showMenace = false;
             }
         }, 1000)
-        /*  setInterval(() => {
+          setInterval(() => {
              const MAGNITUDE = 3
              let yCurrent = this.state.yAxis - MAGNITUDE
              this.setState({
                  yAxis: yCurrent
              })
-         }, 20) */
+         }, 20) 
     }
+
 
     componentDidUpdate() {
 
@@ -56,11 +57,9 @@ class GameTable extends Component {
     }
 
 
-
     fly = () => {
 
-
-        let incrementedY = this.state.yAxis + 50;
+        let incrementedY = this.state.yAxis + 70;
 
         this.setState({
             yAxis: incrementedY
