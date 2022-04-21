@@ -6,7 +6,7 @@ import UiButton from '../functionalComponents/ui/UiButton/UiButton'
 import './GameTable.css'
 import ost from '../../assets/audio/ostDoom.mp3'
 
-import  withRouter  from '../../utils/withNavigation'
+import withRouter from '../../utils/withNavigation'
 class GameTable extends Component {
     constructor(props) {
         super(props);
