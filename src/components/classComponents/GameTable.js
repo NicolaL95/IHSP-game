@@ -13,13 +13,15 @@ class GameTable extends Component {
             gameOver: false,
             showMenace: false,
             yAxisM: 150,
-            xAxisM: 650
+            xAxisM: 650,
+            hp: 3
         }
         this.setScore = 0;
         this.startMenace = null;
         this.probabilityToSpawn = 2;
         this.isJumping = false;
         this.menaceisOnScrenn = false;
+        this.damageRecived = false;
 
     }
 
@@ -63,13 +65,19 @@ class GameTable extends Component {
 
                     /* console.log(foundX, foundY) */
                     if (foundX && foundY) {
-                        console.log('gameover')
+                        if (!this.damageRecived) {
+                            let newHp = this.state.hp - 1
+                            this.setState({ hp: newHp })
+                            this.damageRecived = true
+                        }
+
                     }
 
                     /* if(this.state.xAxisM - 40) */
 
                     if (xAxisM == -80) {
                         this.menaceisOnScrenn = false;
+                        this.damageRecived = false;
                         clearInterval(menaceAttack)
                         this.setState({
                             xAxisM: 650
@@ -137,7 +145,10 @@ class GameTable extends Component {
                     <div onClick={this.fly} className='game_container'>
                         {!this.state.gameOver ? <>
                             <div className='score'>
-                                <p>{this.state.score}</p>
+                                <p> {this.state.score}</p>
+                            </div>
+                            <div className='hp'>
+                                <p>HP: {this.state.hp}</p>
                             </div>
                             <Character
                                 x={this.state.xAxis}

@@ -1,5 +1,4 @@
-
-.container_game{
+.container_game {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +20,7 @@
 }
 
 .parallax {
-    background-image:url('../../assets/images/parallax.png');
+    background-image: url('../../assets/images/parallax.png');
     background-repeat: repeat-x;
     background-position-y: 40px;
     animation: animate 8s reverse infinite linear;
@@ -36,8 +35,21 @@
     font-size: 30px;
 }
 
-.score p{
+.score p {
     text-shadow: 3px 1px black;
+}
+
+
+.hp {
+    position: absolute;
+    color: white;
+    margin-left: 600px;
+    font-size: 30px;
+}
+
+
+.hp p {
+    text-shadow: 3px 1px black
 }
 
 .game_over {
@@ -52,9 +64,11 @@
     0% {
         background-position: 0px, 0px
     }
+
     50% {
         background-position: 450px, 450px
     }
+
     100% {
         background-position: 900px, 900px
     }
