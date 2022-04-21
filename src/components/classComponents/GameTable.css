@@ -37,6 +37,7 @@
 
 .score p {
     text-shadow: 3px 1px black;
+    user-select: none;
 }
 
 
@@ -49,7 +50,8 @@
 
 
 .hp p {
-    text-shadow: 3px 1px black
+    text-shadow: 3px 1px black;
+    user-select: none;
 }
 
 .game_over {

@@ -3,6 +3,7 @@ import Character from '../functionalComponents/ui/Character/Character'
 import Obstacles from '../functionalComponents/ui/Obstacles/Obstacles'
 import './GameTable.css'
 import ost from '../../assets/audio/ostDoom.mp3'
+import withNav from '../../utils/withNavigation'
 class GameTable extends Component {
     constructor(props) {
         super(props);
@@ -173,4 +174,4 @@ class GameTable extends Component {
         )
     }
 }
-export default GameTable
+export default withNav(GameTable)
