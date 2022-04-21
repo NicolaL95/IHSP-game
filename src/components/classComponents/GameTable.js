@@ -75,6 +75,13 @@ class GameTable extends Component {
 
                     /* if(this.state.xAxisM - 40) */
 
+                    if (this.state.hp == 0) {
+                        this.setState({
+                            gameOver: true
+                        })
+                    }
+
+
                     if (xAxisM == -80) {
                         this.menaceisOnScrenn = false;
                         this.damageRecived = false;
@@ -99,6 +106,7 @@ class GameTable extends Component {
                 yAxis: yCurrent
             })
         }, 20)
+
     }
 
 
@@ -163,7 +171,12 @@ class GameTable extends Component {
 
 
                         </>
-                            : <p className='game_over'>Game Over</p>}
+                            : <div className='game_over'>
+                                <h2>Game Over</h2>
+                                <h4>Beije ti ha silurato</h4>
+                            </div>
+
+                        }
 
 
                     </div>
