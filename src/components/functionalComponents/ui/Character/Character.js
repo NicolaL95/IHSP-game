@@ -11,11 +11,13 @@ export default function Character(props) {
       image={Sprite}
       widthFrame={120}
       heightFrame={170}
-      steps={30}
-      fps={2}
-      loop={false}
+      steps={4}
+      fps={4}
+      loop={true}
       direction={'forward'}
-      autoplay={false}
+      autoplay={true}
+      startAt={2}
+      endAt={3}
       style={{
         height: "100px",
         width: "70px",
