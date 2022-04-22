@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useNavigate } from "react-router";
 
 //STYLE
@@ -39,8 +39,7 @@ function Welcome() {
             <div className='container'>
                 <header></header>
                 <main>
-                    
-                <div className='title_container'>
+                    <div className='title_container'>
                         <h1>Incredibly Hard Second Project</h1>
                         <h4>"E' meno complicato di quello che pensate."</h4>
                         <p>-cit Borerto Rrogi</p>

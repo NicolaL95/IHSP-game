@@ -20,8 +20,9 @@
     flex-direction: column;
     text-align: center;
     animation: titleDrop 1s linear 0s 1 normal none;
-    color: white;
-    text-shadow: 3px 1px black;
+        color: white;
+        text-shadow: 3px 1px black;
+
 }
 
 
