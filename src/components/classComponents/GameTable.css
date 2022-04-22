@@ -19,7 +19,7 @@
 
 .game_container:active .character{
     
-    animation: sprite 1.5s steps(6) infinite;
+    animation: sprite 0.5s infinite;
 }
 
 

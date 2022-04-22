@@ -29,7 +29,8 @@ class GameTable extends Component {
             showMenace: false,
             yAxisM: 150,
             xAxisM: 650,
-            hp: 3
+            hp: 3,
+            inputValue: ''
         }
         this.gameHasStarted = false;
         this.setScore = 0;
@@ -38,6 +39,7 @@ class GameTable extends Component {
         this.isJumping = false;
         this.menaceisOnScrenn = false;
         this.damageRecived = false;
+
     }
 
     componentDidMount() {
@@ -134,6 +136,10 @@ class GameTable extends Component {
                 gameOver: true
             })
             clearInterval(this.setScore);
+            let best = sessionStorage.getItem('best_score')
+            if (best < this.state.score) {
+                sessionStorage.setItem('best_score', this.state.score)
+            }
         }
 
     }
@@ -202,6 +208,10 @@ class GameTable extends Component {
                                 <div className='gameOver_message'>
                                     <h2>Game Over</h2>
                                     <h4>Beije ti ha silurato</h4>
+                                    <h5>Score: {this.state.score}
+                                    </h5>
+                                    <h5>Best Score:{sessionStorage.getItem('best_score')}</h5>
+
 
                                     <UiButton label={'Torna al menù'}
                                         path={"/"}
