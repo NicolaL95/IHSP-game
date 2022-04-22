@@ -20,7 +20,7 @@ export default function Character(props) {
   function characterJump() {
   }
   return (
-    <div className='character' onClick={characterJump} style={style}></div>
+    <div className={`character ${props.class}`} onClick={characterJump} style={style}></div>
   )
 }
 

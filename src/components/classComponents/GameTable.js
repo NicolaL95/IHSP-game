@@ -31,7 +31,8 @@ class GameTable extends Component {
             yAxisM: 150,
             xAxisM: 650,
             hp: 3,
-            inputValue: ''
+            inputValue: '',
+            isFalling: false
         }
         this.gameHasStarted = false;
         this.setScore = 0;
@@ -115,7 +116,7 @@ class GameTable extends Component {
                         { this.ostAudio.stop() }
                     }
 
-                    if (xAxisM == -80) {
+                    if (xAxisM <= -80) {
                         this.menaceisOnScrenn = false;
                         this.damageRecived = false;
                         clearInterval(menaceAttack)
@@ -123,7 +124,7 @@ class GameTable extends Component {
                             xAxisM: 650
                         })
                     }
-                }, 0.5)
+                }, 1)
             }
             else {
                 this.state.showMenace = false;
@@ -134,18 +135,20 @@ class GameTable extends Component {
             if (this.isJumping || !this.gameHasStarted) {  //<-- test gameHasStarted
                 return
             }
+            this.setState({
+                isFalling: true
+            })
             const MAGNITUDE = 3
             let yCurrent = this.state.yAxis - MAGNITUDE
             this.setState({
-                yAxis: yCurrent
+                yAxis: yCurrent,
             })
         }, 20)
     }
 
 
     componentDidUpdate() {
-
-        if (!this.state.gameOver && (this.state.yAxis >= 850 || this.state.yAxis <= -100)) {
+        if (!this.state.gameOver && (this.state.yAxis >= 340 || this.state.yAxis <= -100)) {
             this.setState({
                 gameOver: true
             })
@@ -164,9 +167,10 @@ class GameTable extends Component {
 
     fly = () => {
 
-        /* new Audio(jump).play(); */
-        this.jumpAudio.play()
-
+        new Audio(jump).play();
+        this.setState({
+            isFalling: false
+        })
         let jumpCount = 0
         let incrementedY = this.state.yAxis;
         this.isJumping = true;
@@ -212,7 +216,7 @@ class GameTable extends Component {
                             <Character
                                 x={this.state.xAxis}
                                 y={this.state.yAxis}
-
+                                class={this.state.isFalling ? 'is_falling' : ''}
                             />
 
                             <Obstacles

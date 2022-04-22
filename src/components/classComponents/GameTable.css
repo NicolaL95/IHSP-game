@@ -44,6 +44,22 @@
     user-select: none;
 }
 
+.is_falling {
+    animation: rotateDown 0.2s;
+    animation-fill-mode: forwards;
+    
+}
+
+@keyframes rotateDown {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(35deg)
+    }
+}
+
 
 .hp {
     position: absolute;
