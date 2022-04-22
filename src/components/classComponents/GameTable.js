@@ -81,7 +81,7 @@ class GameTable extends Component {
 
         this.startMenace = setInterval(() => {
 
-            const rangeXChar = [...Array((this.state.xAxis + 40) - (this.state.xAxis - 40) + 1).keys()].map(x => x + (this.state.xAxis - 40));
+            const rangeXChar = [...Array((this.state.xAxis + 35) - (this.state.xAxis - 35) + 1).keys()].map(x => x + (this.state.xAxis - 35));
             if (this.menaceisOnScrenn == true) {
                 return
             }
@@ -107,7 +107,7 @@ class GameTable extends Component {
 
                     const rangeYMenace = [...Array((this.state.yAxisM + 20) - (this.state.yAxisM - 20) + 1).keys()].map(x => x + (this.state.yAxisM - 20))
 
-                    const rangeYChar = [...Array((this.state.yAxis + 10) - (this.state.yAxis - 10) + 1).keys()].map(x => x + (this.state.yAxis - 10))
+                    const rangeYChar = [...Array((this.state.yAxis + 50) - (this.state.yAxis - 10) + 1).keys()].map(x => x + (this.state.yAxis - 10))
 
                     const foundX = rangeXChar.some(r => rangeXMenace.indexOf(r) >= 0)
                     const foundY = rangeYChar.some(r => rangeYMenace.indexOf(r) >= 0)

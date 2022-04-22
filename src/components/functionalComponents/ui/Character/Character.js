@@ -9,16 +9,16 @@ export default function Character(props) {
     <Spritesheet
       className={'character'}
       image={Sprite}
-      widthFrame={80}
-      heightFrame={110}
-      steps={4}
-      fps={8}
-      loop={true}
+      widthFrame={120}
+      heightFrame={170}
+      steps={30}
+      fps={2}
+      loop={false}
       direction={'forward'}
       autoplay={false}
       style={{
-        height: "110px",
-        width: "80px",
+        height: "100px",
+        width: "70px",
         position: "absolute",
         bottom: `${props.y}px`,
         left: `${props.x}px`,
@@ -26,7 +26,8 @@ export default function Character(props) {
       }}
       getInstance={spritesheet => {
         properties.jumpingAnimation = spritesheet
-      }} />
+      }}
+    />
   )
 
 }
