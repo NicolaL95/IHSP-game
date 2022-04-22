@@ -16,7 +16,8 @@ import missile from '../../assets/audio/missile.mp3'
 //Wrapper
 import withRouter from '../../utils/withNavigation'
 
-
+//Sound Howler
+import { Howl, Howler } from 'howler'
 
 class GameTable extends Component {
     constructor(props) {
@@ -40,17 +41,29 @@ class GameTable extends Component {
         this.menaceisOnScrenn = false;
         this.damageRecived = false;
 
+        //audio var
+        this.jumpAudio = new Howl({
+            src: [jump],
+            volume: 0.05
+        })
+
+        this.ostAudio = new Howl({
+            src: [ost],
+            volume: 0.05
+        })
     }
 
     componentDidMount() {
-        /* new Audio(ost).play(); */
+        this.ostAudio.play()
+
         this.setScore = setInterval(() => {
-            if (this.gameHasStarted) {   //<-- test gameHasStarted
+            if (this.gameHasStarted && !this.state.gameOver) {   //<-- test gameHasStarted
                 this.setState({
                     score: this.state.score + 1
                 })
             }
         }, 20)
+
         this.startMenace = setInterval(() => {
             const rangeXChar = [...Array((this.state.xAxis + 40) - (this.state.xAxis - 40) + 1).keys()].map(x => x + (this.state.xAxis - 40));
             if (this.menaceisOnScrenn == true) {
@@ -99,6 +112,7 @@ class GameTable extends Component {
                         this.setState({
                             gameOver: true
                         })
+                        { this.ostAudio.stop() }
                     }
 
                     if (xAxisM == -80) {
@@ -135,6 +149,9 @@ class GameTable extends Component {
             this.setState({
                 gameOver: true
             })
+
+            { this.ostAudio.stop() }
+
             clearInterval(this.setScore);
             let best = sessionStorage.getItem('best_score')
             if (best < this.state.score) {
@@ -147,7 +164,8 @@ class GameTable extends Component {
 
     fly = () => {
 
-        new Audio(jump).play();
+        /* new Audio(jump).play(); */
+        this.jumpAudio.play()
 
         let jumpCount = 0
         let incrementedY = this.state.yAxis;
@@ -204,7 +222,8 @@ class GameTable extends Component {
 
 
                         </>
-                            : <div className='game_over'>
+                            :
+                            <div className='game_over'>
                                 <div className='gameOver_message'>
                                     <h2>Game Over</h2>
                                     <h4>Beije ti ha silurato</h4>

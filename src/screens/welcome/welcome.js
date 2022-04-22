@@ -1,15 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from "react-router";
+
 //STYLE
 import '../welcome/Welcome.css'
 
+//Components
 import UiButton from '../../components/functionalComponents/ui/UiButton/UiButton'
 
+//Audio
+import ostWelcome from '../../assets/audio/ostWelcome.mp3'
+
+//Sound howler
+import { Howl, Howler } from 'howler'
+
+
+
 function Welcome() {
+
+    let ost = new Howl({
+        src: [ostWelcome],
+        volume: 0.2
+    })
+
+    ost.play()
+
+
     const navigate = useNavigate();
 
     function goToPage(path) {
         navigate(path)
+        ost.stop()
     }
     return (
         <div style={{
@@ -33,11 +53,11 @@ function Welcome() {
                             className='bottoneWelcome'
                         />
 
-                        <UiButton
+                        {/*   <UiButton
                             label={'Score'}
                             path={"/leaderboard"}
                             callback={goToPage}
-                            className='bottoneWelcome' />
+                            className='bottoneWelcome' /> */}
 
                     </div>
                 </main>
