@@ -11,7 +11,6 @@ import './GameTable.css'
 //Audio
 import ost from '../../assets/audio/ostDoom.mp3'
 import jump from '../../assets/audio/jump.mp3'
-import missile from '../../assets/audio/missile.mp3'
 
 //Wrapper
 import withRouter from '../../utils/withNavigation'
