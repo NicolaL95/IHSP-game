@@ -231,7 +231,7 @@ class GameTable extends Component {
                             </div>
 
                             {!this.gameHasStarted &&
-                                <p className='tapToStart'>Clicca per iniziare</p>
+                                <p className='tapToStart'>Schiva i "facilissimi" progetti di Boberto!</p>
                             }
                             <div className='hp'>
                                 <p>Test di valutazione rimasti:</p>
