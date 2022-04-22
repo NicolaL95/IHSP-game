@@ -216,7 +216,7 @@ class GameTable extends Component {
                             </div>
                             <div className='hp'>
                                 <p>Test di valutazione rimasti</p>
-                                <p>{this.state.hp}</p>
+
                             </div>
                             <Character
                                 x={this.state.xAxis}
