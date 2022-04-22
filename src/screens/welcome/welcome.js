@@ -40,9 +40,9 @@ function Welcome() {
                 <header></header>
                 <main>
                     <div className='title_container'>
-                        <h1>I.H.S.P</h1>
-                        <h2>Incredible Hard Second Project</h2>
-                        <h4>La pasquetta peggiore della tua vita</h4>
+                        <h1>Incredibly Hard Second Project</h1>
+                        <h4>"E' meno complicato di quello che pensate"</h4>
+                        <p>-cit Borerto Rrogi</p>
                     </div>
 
                     <div className='button_container'>

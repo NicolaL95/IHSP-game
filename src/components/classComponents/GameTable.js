@@ -228,8 +228,8 @@ class GameTable extends Component {
                                 <p className='tapToStart'>Clicca per iniziare</p>
                             }
                             <div className='hp'>
-                                <p>Test di valutazione rimasti</p>
-
+                                <p>Test di valutazione rimasti:</p>
+                                <p>{this.state.hp}</p>
                             </div>
                             <Character
                                 x={this.state.xAxis}
