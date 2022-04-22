@@ -1,46 +1,63 @@
 import React, { useState } from 'react'
 import Sprite from '../../../../assets/images/character.png'
-import styled, { keyframes } from 'styled-components'
-
-
+import Spritesheet from 'react-responsive-spritesheet';
+import { properties } from '../../../../utils/properties'
 
 export default function Character(props) {
 
-  let style = {
-    height: "110px",
-    width: "80px",
-    position: "absolute",
-    bottom: `${props.y}px`,
-    left: `${props.x}px`,
-    transform: 'translate(-50 %, -50 %)',
-    background: `url(${Sprite}) left center`,
-    backgroundSize: 'cover'
-
-  }
-  function characterJump() {
-  }
   return (
-    <div className={`character ${props.class}`} onClick={characterJump} style={style}></div>
+    <Spritesheet
+      className={'character'}
+      image={Sprite}
+      widthFrame={80}
+      heightFrame={110}
+      steps={4}
+      fps={8}
+      loop={true}
+      direction={'forward'}
+      autoplay={false}
+      style={{
+        height: "110px",
+        width: "80px",
+        position: "absolute",
+        bottom: `${props.y}px`,
+        left: `${props.x}px`,
+        transform: 'translate(-50 %, -50 %)',
+      }}
+      getInstance={spritesheet => {
+        properties.jumpingAnimation = spritesheet
+      }} />
   )
+
 }
 
 
+/* style={{
+       height: "110px",
+       width: "80px",
+       position: "absolute",
+       bottom: `${props.y}px`,
+       left: `${props.x}px`,
+       transform: 'translate(-50 %, -50 %)',
+     }} */
 
-/* const animation = keyframes`
-  100% { background-position: -1000px; }
-`;
+/* className = {`my-element__class--style`}
 
-const SpriteCharacter = styled.div`
-    height: 160px;
-       width: 120px;
-  position: absolute;
- 
-  bottom: ${props => props.y}px;
-  left: ${props => props.x}px;
-  transform: translate(-50%, -50%);
-  background: url(${Sprite}) left center;
-  animation: ${animation} 0.7s steps(4) infinite; 
-`;
-
-export default SpriteCharacter
  */
+
+/* let style = {
+  height: "110px",
+  width: "80px",
+  position: "absolute",
+  bottom: `${props.y}px`,
+  left: `${props.x}px`,
+  transform: 'translate(-50 %, -50 %)',
+  background: `url(${Sprite}) left center`,
+  backgroundSize: 'cover'
+
+}
+function characterJump() {
+}
+return (
+  <div className={`character ${props.class}`} onClick={characterJump} style={style}></div>
+) */

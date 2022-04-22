@@ -16,6 +16,8 @@ import hit from '../../assets/audio/hitSound.mp3'
 //Wrapper
 import withRouter from '../../utils/withNavigation'
 
+import { properties } from '../../utils/properties'
+
 //Sound Howler
 import { Howl, Howler } from 'howler'
 
@@ -42,7 +44,7 @@ class GameTable extends Component {
         this.isJumping = false;
         this.menaceisOnScrenn = false;
         this.damageRecived = false;
-
+        this.jumAnimation = null;
 
         //audio var
         this.jumpAudio = new Howl({
@@ -179,6 +181,7 @@ class GameTable extends Component {
 
     fly = () => {
 
+        properties.jumpingAnimation.play()
         this.jumpAudio.play()
 
         this.setState({
@@ -212,6 +215,10 @@ class GameTable extends Component {
         this.props.router.navigate(path)
     }
 
+    test(e) {
+        //this.jumAnimation = e;
+        //console.log(this.jumAnimation);
+    }
 
     render() {
 
