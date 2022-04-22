@@ -32,7 +32,8 @@ class GameTable extends Component {
             xAxisM: 650,
             hp: 3,
             inputValue: '',
-            isFalling: false
+            isFalling: false,
+            imgMenace: null
         }
         this.gameHasStarted = false;
         this.setScore = 0;
@@ -41,6 +42,7 @@ class GameTable extends Component {
         this.isJumping = false;
         this.menaceisOnScrenn = false;
         this.damageRecived = false;
+
 
         //audio var
         this.jumpAudio = new Howl({
@@ -55,7 +57,7 @@ class GameTable extends Component {
     }
 
     componentDidMount() {
-        this.ostAudio.play()
+        /*   this.ostAudio.play() */
 
         this.setScore = setInterval(() => {
             if (this.gameHasStarted && !this.state.gameOver) {   //<-- test gameHasStarted
@@ -66,6 +68,7 @@ class GameTable extends Component {
         }, 20)
 
         this.startMenace = setInterval(() => {
+
             const rangeXChar = [...Array((this.state.xAxis + 40) - (this.state.xAxis - 40) + 1).keys()].map(x => x + (this.state.xAxis - 40));
             if (this.menaceisOnScrenn == true) {
                 return
@@ -73,6 +76,7 @@ class GameTable extends Component {
             let randomNumber = Math.floor(Math.random() * this.probabilityToSpawn);
             if (randomNumber == 1 && this.gameHasStarted) {   //<-- test gameHasStarted
                 /* new Audio(missile).play(); */
+                this.state.imgMenace = Math.floor(Math.random() * 4);
                 this.menaceisOnScrenn = true;
                 let yAxisMenace = Math.floor(Math.random() * (280 - 25) + 25);
                 this.setState({
@@ -81,7 +85,7 @@ class GameTable extends Component {
                 this.state.showMenace = true;
                 const menaceAttack = setInterval(() => {
                     let xAxisM = this.state.xAxisM
-                    xAxisM = xAxisM - 1
+                    xAxisM = xAxisM - 2
                     this.setState({
                         xAxisM: xAxisM
                     })
@@ -148,7 +152,7 @@ class GameTable extends Component {
 
 
     componentDidUpdate() {
-        if (!this.state.gameOver && (this.state.yAxis >= 340 || this.state.yAxis <= -100)) {
+        if (!this.state.gameOver && (this.state.yAxis >= 400 || this.state.yAxis <= -100)) {
             this.setState({
                 gameOver: true
             })
@@ -211,7 +215,8 @@ class GameTable extends Component {
                                 <p> {this.state.score}</p>
                             </div>
                             <div className='hp'>
-                                <p>HP: {this.state.hp}</p>
+                                <p>Test di valutazione rimasti</p>
+                                <p>{this.state.hp}</p>
                             </div>
                             <Character
                                 x={this.state.xAxis}
@@ -222,6 +227,7 @@ class GameTable extends Component {
                             <Obstacles
                                 y={this.state.yAxisM}
                                 x={this.state.xAxisM}
+                                img={this.state.imgMenace}
                             />
 
 

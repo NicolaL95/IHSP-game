@@ -19,7 +19,6 @@
 
 .game_container:active .character{
     
-    animation: sprite 0.5s infinite;
 }
 
 
@@ -64,8 +63,17 @@
 .hp {
     position: absolute;
     color: white;
-    margin-left: 600px;
-    font-size: 30px;
+    margin-left: 450px;
+    display: flex;
+    align-items: center;
+}
+
+.hp p:last-child{
+    font-size: 50px;
+}
+
+.hp p:first-child{
+    text-align: center;
 }
 
 

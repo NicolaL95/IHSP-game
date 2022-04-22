@@ -12,7 +12,7 @@ export default function Obstacles(props) {
 
     return (
         <div className='obstacles_container' style={{
-            backgroundImage: `url(${RANDOMELEMENT[2]})`,
+            backgroundImage: `url(${RANDOMELEMENT[props.img]})`,
             bottom: `${props.y}px`,
             left: `${props.x}px`
         }} ></div>
