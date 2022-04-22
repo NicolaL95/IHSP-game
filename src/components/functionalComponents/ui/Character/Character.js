@@ -15,6 +15,7 @@ export default function Character(props) {
     transform: 'translate(-50 %, -50 %)',
     background: `url(${Sprite}) left center`,
     backgroundSize: 'cover'
+
   }
   function characterJump() {
   }
