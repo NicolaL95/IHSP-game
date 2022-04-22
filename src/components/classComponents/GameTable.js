@@ -223,7 +223,7 @@ class GameTable extends Component {
                             <div className='score'>
                                 <p> {this.state.score}</p>
                             </div>
-                            
+
                             {!this.gameHasStarted &&
                                 <p className='tapToStart'>Clicca per iniziare</p>
                             }
