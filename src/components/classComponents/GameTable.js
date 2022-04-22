@@ -153,6 +153,7 @@ class GameTable extends Component {
             if (this.isJumping || !this.gameHasStarted) {  //<-- test gameHasStarted
                 return
             }
+            
             this.setState({
                 isFalling: true
             })
@@ -181,6 +182,8 @@ class GameTable extends Component {
 
     fly = () => {
 
+        //properties.jumpingAnimation.goToAndPlay(0)
+
         properties.jumpingAnimation.play()
         this.jumpAudio.play()
 
@@ -205,6 +208,7 @@ class GameTable extends Component {
                 clearInterval(jumpingAnimation)
                 jumpCount = 0;
                 this.isJumping = false;
+                properties.jumpingAnimation.goToAndPlay(3)
             }
         }, 10)
 
@@ -213,11 +217,6 @@ class GameTable extends Component {
 
     goToPage = (path) => {
         this.props.router.navigate(path)
-    }
-
-    test(e) {
-        //this.jumAnimation = e;
-        //console.log(this.jumAnimation);
     }
 
     render() {
