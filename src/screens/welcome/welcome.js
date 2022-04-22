@@ -41,7 +41,7 @@ function Welcome() {
                 <main>
                     <div className='title_container'>
                         <h1>Incredibly Hard Second Project</h1>
-                        <h4>"E' meno complicato di quello che pensate"</h4>
+                        <h4>"E' meno complicato di quello che pensate."</h4>
                         <p>-cit Borerto Rrogi</p>
                     </div>
 
