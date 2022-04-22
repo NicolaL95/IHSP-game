@@ -42,7 +42,7 @@
     text-shadow: 3px 1px black;
     user-select: none;
     background-color: rgba(0, 0, 0, 0.541);
-    padding: 10px;
+    padding: 12px;
     border-radius: 12px;
 }
 
@@ -57,9 +57,9 @@
     position: absolute;
     padding: 10px;
     border-radius: 12px;
-    margin-top: 130px;
+    margin-top: 85px;
     margin-left: 170px;
-    font-size: 30px;
+    font-size: 24px;
     color: white;
     text-shadow: 3px 1px black;
     background-color: rgba(0, 0, 0, 0.541);
@@ -84,6 +84,8 @@
     margin-left: 450px;
     display: flex;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.541);
+    border-radius: 12px;
 }
 
 .hp p:last-child{

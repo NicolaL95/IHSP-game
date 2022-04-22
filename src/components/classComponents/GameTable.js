@@ -153,7 +153,7 @@ class GameTable extends Component {
             if (this.isJumping || !this.gameHasStarted) {  //<-- test gameHasStarted
                 return
             }
-            
+            properties.jumpingAnimation.goToAndPlay(3)
             this.setState({
                 isFalling: true
             })
@@ -162,6 +162,7 @@ class GameTable extends Component {
             this.setState({
                 yAxis: yCurrent,
             })
+
         }, 20)
     }
 
@@ -182,9 +183,9 @@ class GameTable extends Component {
 
     fly = () => {
 
-        //properties.jumpingAnimation.goToAndPlay(0)
-
         properties.jumpingAnimation.play()
+        properties.jumpingAnimation.goToAndPlay(2)
+
         this.jumpAudio.play()
 
         this.setState({
@@ -208,7 +209,6 @@ class GameTable extends Component {
                 clearInterval(jumpingAnimation)
                 jumpCount = 0;
                 this.isJumping = false;
-                properties.jumpingAnimation.goToAndPlay(3)
             }
         }, 10)
 
@@ -231,7 +231,7 @@ class GameTable extends Component {
                             </div>
 
                             {!this.gameHasStarted &&
-                                <p className='tapToStart'>Clicca per iniziare</p>
+                                <p className='tapToStart'>Schiva i "facilissimi" progetti di Boberto!</p>
                             }
                             <div className='hp'>
                                 <p>Test di valutazione rimasti:</p>
