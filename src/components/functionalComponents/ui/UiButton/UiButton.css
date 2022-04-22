@@ -1,25 +1,35 @@
 .bottoneWelcome {
-    text-align: center;
-    line-height: 35px;
-    background-color: rgb(255, 187, 0);
-    width: 100px;
-    height: 40px;
-    font-size: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    animation: buttonDrop 2s linear 0s 1 normal none;
+	text-align: center;
+	line-height: 35px;
+	background-color: rgb(255, 187, 0);
+	width: 100px;
+	height: 40px;
+	font-size: 20px;
+	border-radius: 10px;
+	cursor: pointer;
+	animation: buttonDrop 2s linear 0s 1 normal none;
+}
+
+
+.bottoneWelcome:hover {
+	background-color: rgb(180, 255, 0);
+}
+
+
+.bottoneGameOver:hover {
+	background-color: rgb(180, 255, 0);
 }
 
 
 .bottoneGameOver {
-    text-align: center;
-    line-height: 35px;
-    background-color: rgb(255, 187, 0);
-    width: 200px;
-    height: 40px;
-    font-size: 20px;
-    border-radius: 10px;
-    cursor: pointer;
+	text-align: center;
+	line-height: 35px;
+	background-color: rgb(255, 187, 0);
+	width: 200px;
+	height: 40px;
+	font-size: 20px;
+	border-radius: 10px;
+	cursor: pointer;
 }
 
 

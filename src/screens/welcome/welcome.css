@@ -20,7 +20,8 @@
     flex-direction: column;
     text-align: center;
     animation: titleDrop 1s linear 0s 1 normal none;
-
+    color: white;
+    text-shadow: 3px 1px black;
 }
 
 
@@ -39,7 +40,7 @@ footer{
 }
 
 h1 {
-    font-size: 120px;
+    font-size: 50px;
 }
 
 

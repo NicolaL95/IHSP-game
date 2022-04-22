@@ -15,6 +15,7 @@
     overflow: hidden;
     height: 350px;
     width: 650px;
+    filter: grayscale(30%);
 }
 
 .game_container:active .character{
@@ -42,9 +43,10 @@
     text-shadow: 3px 1px black;
     user-select: none;
     background-color: rgba(0, 0, 0, 0.541);
-    padding: 10px;
+    padding: 13px;
     border-radius: 12px;
 }
+
 
 .is_falling {
     animation: rotateDown 0.2s;
@@ -84,6 +86,8 @@
     margin-left: 450px;
     display: flex;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.541);
+    border-radius: 12px;
 }
 
 .hp p:last-child{

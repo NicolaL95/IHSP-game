@@ -62,6 +62,7 @@ class GameTable extends Component {
     }
 
     componentDidMount() {
+
         this.ostAudio.play()
 
         this.setScore = setInterval(() => {
@@ -76,6 +77,7 @@ class GameTable extends Component {
                 }
             }
         }, 20)
+
 
         this.startMenace = setInterval(() => {
 
@@ -172,8 +174,7 @@ class GameTable extends Component {
             { this.ostAudio.stop() }
 
             clearInterval(this.setScore);
-        }
-
+        } 
     }
 
 
@@ -228,8 +229,8 @@ class GameTable extends Component {
                                 <p className='tapToStart'>Clicca per iniziare</p>
                             }
                             <div className='hp'>
-                                <p>Test di valutazione rimasti</p>
-
+                                <p>Test di valutazione rimasti:</p>
+                                <p>{this.state.hp}</p>
                             </div>
                             <Character
                                 x={this.state.xAxis}
