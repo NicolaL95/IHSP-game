@@ -50,6 +50,18 @@
     
 }
 
+
+.tapToStart{
+    position: absolute;
+    margin-top: 130px;
+    margin-left: 170px;
+    font-size: 30px;
+    color: white;
+    text-shadow: 3px 1px black;
+}
+
+
+
 @keyframes rotateDown {
     0% {
         transform: rotate(0deg)

@@ -11,7 +11,7 @@ import './GameTable.css'
 //Audio
 import ost from '../../assets/audio/ostDoom.mp3'
 import jump from '../../assets/audio/jump.mp3'
-import missile from '../../assets/audio/missile.mp3'
+import hit from '../../assets/audio/hitSound.mp3'
 
 //Wrapper
 import withRouter from '../../utils/withNavigation'
@@ -52,6 +52,11 @@ class GameTable extends Component {
             src: [ost],
             volume: 0.05
         })
+
+        this.hitAudio = new Howl({
+            src: [hit],
+            volume: 0.2
+        })
     }
 
     componentDidMount() {
@@ -62,6 +67,12 @@ class GameTable extends Component {
                 this.setState({
                     score: this.state.score + 1
                 })
+
+                let best = sessionStorage.getItem('best_score')
+                if (best < this.state.score) {
+                    sessionStorage.setItem('best_score', this.state.score + 1)
+                }
+
             }
         }, 20)
 
@@ -71,8 +82,9 @@ class GameTable extends Component {
                 return
             }
             let randomNumber = Math.floor(Math.random() * this.probabilityToSpawn);
+
             if (randomNumber == 1 && this.gameHasStarted) {   //<-- test gameHasStarted
-                /* new Audio(missile).play(); */
+
                 this.menaceisOnScrenn = true;
                 let yAxisMenace = Math.floor(Math.random() * (280 - 25) + 25);
                 this.setState({
@@ -103,6 +115,7 @@ class GameTable extends Component {
                             let newHp = this.state.hp - 1
                             this.setState({ hp: newHp })
                             this.damageRecived = true
+                            this.hitAudio.play()
                         }
 
                     }
@@ -113,7 +126,7 @@ class GameTable extends Component {
                         this.setState({
                             gameOver: true
                         })
-                        { this.ostAudio.stop() }
+                        this.ostAudio.stop()
                     }
 
                     if (xAxisM <= -80) {
@@ -153,13 +166,10 @@ class GameTable extends Component {
                 gameOver: true
             })
 
-            { this.ostAudio.stop() }
+            this.ostAudio.stop()
 
-            clearInterval(this.setScore);
-            let best = sessionStorage.getItem('best_score')
-            if (best < this.state.score) {
-                sessionStorage.setItem('best_score', this.state.score)
-            }
+            clearInterval(this.setScore)
+            
         }
 
     }
@@ -167,7 +177,8 @@ class GameTable extends Component {
 
     fly = () => {
 
-        new Audio(jump).play();
+        this.jumpAudio.play()
+
         this.setState({
             isFalling: false
         })
@@ -213,6 +224,12 @@ class GameTable extends Component {
                             <div className='hp'>
                                 <p>HP: {this.state.hp}</p>
                             </div>
+
+
+                            {!this.gameHasStarted &&
+                                <p className='tapToStart'>Clicca per iniziare!</p>
+                            }
+
                             <Character
                                 x={this.state.xAxis}
                                 y={this.state.yAxis}
@@ -241,10 +258,10 @@ class GameTable extends Component {
                                         callback={this.goToPage}
                                         className='bottoneGameOver' />
 
-                                    <UiButton label={'Gioca ancora'}
+                                    {/*  <UiButton label={'Gioca ancora'}
                                         path={"/game"}
                                         callback={this.goToPage}
-                                        className='bottoneGameOver' />
+                                        className='bottoneGameOver' /> */}
                                 </div>
                             </div>
                         }

@@ -19,7 +19,7 @@ function Welcome() {
 
     let ost = new Howl({
         src: [ostWelcome],
-        volume: 0.2
+        volume: 0.05
     })
 
     ost.play()
