@@ -8,7 +8,7 @@
     background-image: url('../../assets/images/welcome_bg.jpg');
     background-position: center;
     background-size: cover;
-    position: absolute;
+ /*    position: absolute; */
     height: 350px;
     width: 650px;
     animation: rotate 4s infinite linear
@@ -35,7 +35,7 @@
 }
 
 
-footer{
+.screen_footer{
     text-align: center;
     margin: 40px;
 }

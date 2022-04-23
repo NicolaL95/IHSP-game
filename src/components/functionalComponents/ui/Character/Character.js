@@ -7,11 +7,11 @@ export default function Character(props) {
 
   return (
     <Spritesheet
-      className={'character'}
+      className={`character`}
       image={Sprite}
       widthFrame={120}
       heightFrame={170}
-      steps={4}
+      steps={3}
       fps={4}
       loop={true}
       direction={'forward'}
