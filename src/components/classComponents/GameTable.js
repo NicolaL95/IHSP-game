@@ -102,28 +102,30 @@ class GameTable extends Component {
                         xAxisM: xAxisM
                     })
 
+                    if (this.state.xAxisM - this.state.xAxis < 100 || this.state.xAxis - this.state.xAxisM < 100) {
+                        const rangeXMenace = [...Array((this.state.xAxisM + 40) - (this.state.xAxisM - 40) + 1).keys()].map(x => x + (this.state.xAxisM - 40));
 
-                    const rangeXMenace = [...Array((this.state.xAxisM + 40) - (this.state.xAxisM - 40) + 1).keys()].map(x => x + (this.state.xAxisM - 40));
+                        const rangeYMenace = [...Array((this.state.yAxisM + 20) - (this.state.yAxisM - 20) + 1).keys()].map(x => x + (this.state.yAxisM - 20))
 
-                    const rangeYMenace = [...Array((this.state.yAxisM + 20) - (this.state.yAxisM - 20) + 1).keys()].map(x => x + (this.state.yAxisM - 20))
+                        const rangeYChar = [...Array((this.state.yAxis + 50) - (this.state.yAxis - 10) + 1).keys()].map(x => x + (this.state.yAxis - 10))
 
-                    const rangeYChar = [...Array((this.state.yAxis + 50) - (this.state.yAxis - 10) + 1).keys()].map(x => x + (this.state.yAxis - 10))
-
-                    const foundX = rangeXChar.some(r => rangeXMenace.indexOf(r) >= 0)
-                    const foundY = rangeYChar.some(r => rangeYMenace.indexOf(r) >= 0)
+                        const foundX = rangeXChar.some(r => rangeXMenace.indexOf(r) >= 0)
+                        const foundY = rangeYChar.some(r => rangeYMenace.indexOf(r) >= 0)
 
 
-                    /* console.log(foundX, foundY) */
-                    if (foundX && foundY) {
-                        if (!this.damageRecived) {
-                            let newHp = this.state.hp - 1
-                            this.setState({ hp: newHp })
-                            this.damageRecived = true
+                        /* console.log(foundX, foundY) */
+                        if (foundX && foundY) {
+                            if (!this.damageRecived) {
+                                let newHp = this.state.hp - 1
+                                this.setState({ hp: newHp })
+                                this.damageRecived = true
 
-                            this.hitAudio.play()
+                                this.hitAudio.play()
+                            }
+
                         }
-
                     }
+
 
                     /* if(this.state.xAxisM - 40) */
 
