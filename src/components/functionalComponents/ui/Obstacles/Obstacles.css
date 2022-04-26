@@ -9,3 +9,15 @@
         border-radius: 10px;
         border: 1px solid red;
 }
+
+.obstacles_hit {
+        position: absolute;
+        height: 40px;
+        width: 80px;
+        background-color: black;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 10px;
+        border: 2px solid red;
+}

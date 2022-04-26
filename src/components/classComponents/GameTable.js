@@ -118,13 +118,13 @@ class GameTable extends Component {
 
 
                 //Difficoltá: in base allo score, lo spostamento dei nemici cambia
-                if (this.state.score < 500) {
+                if (this.state.score < 1000) {
                     this.xFastMenace = 2
                 }
-                if (this.state.score > 500 && this.state.score < 1000) {
+                if (this.state.score > 1000 && this.state.score < 2000) {
                     this.xFastMenace = 3
                 }
-                if (this.state.score > 1000) {
+                if (this.state.score > 3000) {
                     this.xFastMenace = 4
                 }
 
@@ -336,6 +336,7 @@ class GameTable extends Component {
                                 y={this.state.yAxisM}
                                 x={this.state.xAxisM}
                                 img={this.state.imgMenace}
+                                class={this.damageRecived ? 'obstacles_hit' : 'obstacles_container'}
                             />
 
 

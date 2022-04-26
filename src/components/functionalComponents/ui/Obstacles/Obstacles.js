@@ -15,7 +15,7 @@ export default function Obstacles(props) {
     const RANDOMELEMENT = [Obstacle1, Obstacle2, Obstacle3, Obstacle4, Obstacle5, Obstacle6, Obstacle7, Obstacle8]
 
     return (
-        <div className='obstacles_container' style={{
+        <div className={props.class} style={{
             backgroundImage: `url(${RANDOMELEMENT[props.img]})`,
             bottom: `${props.y}px`,
             left: `${props.x}px`
