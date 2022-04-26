@@ -17,9 +17,7 @@
     width: 650px;
 }
 
-.game_container:active .character{
-    
-}
+
 
 
 .parallax {
@@ -116,6 +114,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.gameOver_message h5{
+    margin-bottom: 10px;
 }
 
 

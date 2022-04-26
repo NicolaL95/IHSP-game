@@ -166,7 +166,7 @@ class GameTable extends Component {
             if (this.isJumping || !this.gameHasStarted) {  //<-- test gameHasStarted
                 return
             }
-            properties.jumpingAnimation.goToAndPlay(3)
+
             this.setState({
                 isFalling: true
             })
@@ -196,7 +196,7 @@ class GameTable extends Component {
     fly = () => {
 
         properties.jumpingAnimation.play()
-        properties.jumpingAnimation.goToAndPlay(2)
+
 
         this.jumpAudio.play()
 
@@ -211,6 +211,9 @@ class GameTable extends Component {
 
 
         const jumpingAnimation = setInterval(() => {
+
+            properties.jumpingAnimation.goToAndPlay(2)
+
 
             incrementedY = incrementedY + 2
             this.setState({

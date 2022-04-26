@@ -61,7 +61,7 @@ function Welcome() {
 
                     </div>
                 </main>
-                <footer>NLD production, all right reserved</footer>
+                <p className='screen_footer'>NLD production, all right reserved</p>
             </div>
         </div>
     )
