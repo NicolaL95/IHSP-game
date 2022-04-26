@@ -24,6 +24,8 @@ import { Howl, Howler } from 'howler'
 class GameTable extends Component {
     constructor(props) {
         super(props);
+
+        //state
         this.state = {
             xAxis: 85,
             yAxis: 150,
@@ -37,6 +39,8 @@ class GameTable extends Component {
             isFalling: false,
             imgMenace: null
         }
+
+        //Variabili
         this.gameHasStarted = false;
         this.setScore = 0;
         this.startMenace = null;
@@ -63,46 +67,75 @@ class GameTable extends Component {
         })
     }
 
+
     componentDidMount() {
+
+        //Play della soundtrack
         this.ostAudio.play()
 
+        //setInterval per il calcolo dello score
         this.setScore = setInterval(() => {
-            if (this.gameHasStarted && !this.state.gameOver) {   //<-- test gameHasStarted
+
+            if (this.gameHasStarted && !this.state.gameOver) {   //<-- Se il game é iniziato e non é GameOver
                 this.setState({
                     score: this.state.score + 1
                 })
 
+                //Prendo 'best_score' dal sessionStorage (Inizialmente sará null) e lo metto in una variabile
                 let best = sessionStorage.getItem('best_score')
+
+                //Controllo se lo score nel sessionStorage é maggiore della variabile 'best'
                 if (best < this.state.score) {
                     sessionStorage.setItem('best_score', this.state.score)
                 }
             }
         }, 20)
 
+        //setInverval per spawn, movimento e hitBox nemici
         this.startMenace = setInterval(() => {
 
+            //Prendo la posizione del nostro pg e lo metto in un array. Le hitBox vengono calcolate aggiungendo
+            //e sottraendo due valori. Con .keys() lo trasformiamo in un oggetto per poi eseguirci un .map per inserirlo in un array.
             const rangeXChar = [...Array((this.state.xAxis + 35) - (this.state.xAxis - 35) + 1).keys()].map(x => x + (this.state.xAxis - 35));
+
+            //Se il nemico é giá spawnato esco dal setInterval
             if (this.menaceisOnScrenn == true) {
                 return
             }
-            let randomNumber = Math.floor(Math.random() * this.probabilityToSpawn);
-            if (randomNumber == 1 && this.gameHasStarted) {   //<-- test gameHasStarted
 
+            //Numero random per spawn nemici: se il numero é == 1 e la variabile gameHasStarted é 'true'
+            //un nemico comparirá a schermo
+            let randomNumber = Math.floor(Math.random() * this.probabilityToSpawn);
+
+            if (randomNumber == 1 && this.gameHasStarted) {
+
+                //Numero random per immagine del nemico
                 this.state.imgMenace = Math.floor(Math.random() * 4);
+
+                //Metto a 'true' la variabile del nemico spawnato
                 this.menaceisOnScrenn = true;
+
+                //Numero random per posizione sull'asse Y del nemico, per poi fare setState
                 let yAxisMenace = Math.floor(Math.random() * (280 - 25) + 25);
                 this.setState({
                     yAxisM: yAxisMenace
                 })
-                this.state.showMenace = true;
+
+                this.state.showMenace = true; //<---------------------------------------controllare se é veramente inutile o meno
+
+
+                //setInterval per lo spostamento dei nemici
                 const menaceAttack = setInterval(() => {
 
+                    //variabile per asse X del nemico
                     let xAxisM = this.state.xAxisM
 
-                    if (this.state.score < 500) {
+
+                    //Difficoltá: in base allo score, lo spostamento dei nemici cambia
+                    if (this.state.score < 1000) {
                         xAxisM = xAxisM - 2
 
-                    } else if (this.state.score > 500 && this.state.score < 1000) {
+                    } else if (this.state.score > 1000 && this.state.score < 2000) {
                         xAxisM = xAxisM - 3
 
                     } else {
@@ -110,42 +143,55 @@ class GameTable extends Component {
 
                     }
 
+                    //Setto la posizione dell'asse X del nemico
                     this.setState({
                         xAxisM: xAxisM
                     })
 
 
+                    //Prendo la posizione del nostro pg e lo metto in un array. Le hitBox vengono calcolate aggiungendo
+                    //e sottraendo due valori. Con .keys() lo trasformiamo in un oggetto per poi eseguirci un .map per inserirlo in un array.
+                    
                     const rangeXMenace = [...Array((this.state.xAxisM + 40) - (this.state.xAxisM - 40) + 1).keys()].map(x => x + (this.state.xAxisM - 40));
 
                     const rangeYMenace = [...Array((this.state.yAxisM + 20) - (this.state.yAxisM - 20) + 1).keys()].map(x => x + (this.state.yAxisM - 20))
 
                     const rangeYChar = [...Array((this.state.yAxis + 50) - (this.state.yAxis - 10) + 1).keys()].map(x => x + (this.state.yAxis - 10))
 
+                    //Creo due variabili che confrontano i due array (rangeXChar con rangeXMenace, rangeYChar con rangeYMenace) per
+                    //verificare se ci sono state collisioni. Le due variabili diventano 'true' o 'false' 
                     const foundX = rangeXChar.some(r => rangeXMenace.indexOf(r) >= 0)
                     const foundY = rangeYChar.some(r => rangeYMenace.indexOf(r) >= 0)
 
-
-                    /* console.log(foundX, foundY) */
+                    //Se é stata trovata una collisione entro nel ciclo per calcolare il danno
                     if (foundX && foundY) {
+
+
+                        //Se la variabile 'damageRecived' é 'false' allora setto gli hp a -1
                         if (!this.damageRecived) {
                             let newHp = this.state.hp - 1
                             this.setState({ hp: newHp })
+
+                            //Setto 'damageRecived' a true. Questo serve per evitare di prendere due danni accidentali di fila
                             this.damageRecived = true
 
+                            //Eseguo il suono di hit
                             this.hitAudio.play()
                         }
-
                     }
 
-                    /* if(this.state.xAxisM - 40) */
-
+                    //Se gli HP sono a zero, setto il GameOver
                     if (this.state.hp == 0) {
                         this.setState({
                             gameOver: true
                         })
-                        { this.ostAudio.stop() }
+
+                        //Forzo lo stop della soundtrack
+                        this.ostAudio.stop()
                     }
 
+                    //Se la posizione del nemico é al di fuori dello schermo, setto 
+                    //le variabili a false e faccio clearInterval dell'attacco del nemico
                     if (xAxisM <= -80) {
                         this.menaceisOnScrenn = false;
                         this.damageRecived = false;
@@ -155,14 +201,20 @@ class GameTable extends Component {
                         })
                     }
                 }, 1)
-            }
+            }   //<--- fine if per attacco nemico
             else {
+
+                //Se il numero random non é uguale a 1, setto la variabile a false.
                 this.state.showMenace = false;
             }
         }, 1000)
 
-        setInterval(() => {
-            
+        //setInterval per gravitá
+        const grav = setInterval(() => {
+
+            //Se il gico non é ancora iniziato e se il personaggio sta saltando
+            //Si esce dal setInterval. Cosí facendo, la gravitá non infuenza il salto
+
             if (this.isJumping || !this.gameHasStarted) {  //<-- test gameHasStarted
                 return
             }
