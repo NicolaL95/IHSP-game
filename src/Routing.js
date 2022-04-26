@@ -6,7 +6,7 @@ import Game from './screens/game/Game'
 
 function Routing() {
     return (
-        <>
+        <div>
             <h1 style={{
                 textAlign: 'center'
             }}>IHSP-Game</h1>
@@ -27,7 +27,7 @@ function Routing() {
                     Sopravvivi agli impossibili Second Projects, ma fai attenzione;
                     Boberto e' abilissimo nel creare complicatissime funzioni di una sola riga. Ma niente paura, avrai tutto il sostegno delle ridondanti e malscritte funzioni dei pakistani da piu' di 1000 righe di codice!</p>
             </footer>
-        </>
+        </div>
     )
 }
 

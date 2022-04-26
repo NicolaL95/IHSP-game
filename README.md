@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## `Librerie utilizzate`
+React-Howler (https://www.npmjs.com/package/react-howler)
+React-responsive-spritesheet (https://www.npmjs.com/package/react-responsive-spritesheet)
+
 ## Available Scripts
 
 In the project directory, you can run:
