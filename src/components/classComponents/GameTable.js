@@ -111,7 +111,7 @@ class GameTable extends Component {
             if (randomNumber == 1 && this.gameHasStarted) {
 
                 //Numero random per immagine del nemico
-                this.state.imgMenace = Math.floor(Math.random() * 4);
+                this.state.imgMenace = Math.floor(Math.random() * 8);
 
                 //Metto a 'true' la variabile del nemico spawnato
                 this.menaceisOnScrenn = true;

@@ -6,7 +6,10 @@ import Game from './screens/game/Game'
 
 function Routing() {
     return (
-        <div>
+        <div style={{
+            width: 650,
+            margin: 'auto'
+        }}>
             <h1 style={{
                 textAlign: 'center'
             }}>IHSP-Game</h1>
