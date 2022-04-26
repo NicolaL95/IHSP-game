@@ -96,8 +96,20 @@ class GameTable extends Component {
                 })
                 this.state.showMenace = true;
                 const menaceAttack = setInterval(() => {
+
                     let xAxisM = this.state.xAxisM
-                    xAxisM = xAxisM - 2
+
+                    if (this.state.score < 500) {
+                        xAxisM = xAxisM - 2
+
+                    } else if (this.state.score > 500 && this.state.score < 1000) {
+                        xAxisM = xAxisM - 3
+
+                    } else {
+                        xAxisM = xAxisM - 4
+
+                    }
+
                     this.setState({
                         xAxisM: xAxisM
                     })
@@ -150,6 +162,7 @@ class GameTable extends Component {
         }, 1000)
 
         setInterval(() => {
+            
             if (this.isJumping || !this.gameHasStarted) {  //<-- test gameHasStarted
                 return
             }
@@ -162,7 +175,6 @@ class GameTable extends Component {
             this.setState({
                 yAxis: yCurrent,
             })
-
         }, 20)
     }
 
