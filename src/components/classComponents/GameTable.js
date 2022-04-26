@@ -148,14 +148,13 @@ class GameTable extends Component {
                         xAxisM: xAxisM
                     })
 
-
+                    if (this.state.xAxisM - this.state.xAxis < 100 || this.state.xAxis - this.state.xAxisM < 100) {
+                       
                     //Prendo la posizione del nostro pg e lo metto in un array. Le hitBox vengono calcolate aggiungendo
                     //e sottraendo due valori. Con .keys() lo trasformiamo in un oggetto per poi eseguirci un .map per inserirlo in un array.
                     
                     const rangeXMenace = [...Array((this.state.xAxisM + 40) - (this.state.xAxisM - 40) + 1).keys()].map(x => x + (this.state.xAxisM - 40));
-
                     const rangeYMenace = [...Array((this.state.yAxisM + 20) - (this.state.yAxisM - 20) + 1).keys()].map(x => x + (this.state.yAxisM - 20))
-
                     const rangeYChar = [...Array((this.state.yAxis + 50) - (this.state.yAxis - 10) + 1).keys()].map(x => x + (this.state.yAxis - 10))
 
                     //Creo due variabili che confrontano i due array (rangeXChar con rangeXMenace, rangeYChar con rangeYMenace) per
@@ -179,6 +178,7 @@ class GameTable extends Component {
                             this.hitAudio.play()
                         }
                     }
+                }
 
                     //Se gli HP sono a zero, setto il GameOver
                     if (this.state.hp == 0) {

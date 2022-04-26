@@ -17,20 +17,26 @@ import { Howl, Howler } from 'howler'
 
 function Welcome() {
 
+    //Variabili 
     let ost = new Howl({
         src: [ostWelcome],
         volume: 0.05
     })
 
+    //Metto in play la soundtrack
     ost.play()
 
 
+    //hook
     const navigate = useNavigate();
 
+
+    //Funzioni
     function goToPage(path) {
         navigate(path)
         ost.stop()
     }
+
     return (
         <div style={{
             display: 'flex',
