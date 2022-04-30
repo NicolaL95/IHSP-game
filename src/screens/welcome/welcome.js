@@ -58,13 +58,6 @@ function Welcome() {
                             callback={goToPage}
                             className='bottoneWelcome'
                         />
-
-                        {/*   <UiButton
-                            label={'Score'}
-                            path={"/leaderboard"}
-                            callback={goToPage}
-                            className='bottoneWelcome' /> */}
-
                     </div>
                 </main>
                 <p className='screen_footer'>NLD production, all right reserved</p>

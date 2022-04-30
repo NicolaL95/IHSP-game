@@ -76,19 +76,22 @@ class GameTable extends Component {
         //setInterval per il calcolo dello score
         this.setScore = setInterval(() => {
 
-            if (this.gameHasStarted && !this.state.gameOver) {   //<-- Se il game é iniziato e non é GameOver
-                this.setState({
-                    score: this.state.score + 1
-                })
+            let totalScore = this.state.score;
 
+            if (this.gameHasStarted && !this.state.gameOver) {   //<-- Se il game é iniziato e non é GameOver
+
+                totalScore += 1;
                 //Prendo 'best_score' dal sessionStorage (Inizialmente sará null) e lo metto in una variabile
                 let best = sessionStorage.getItem('best_score')
 
                 //Controllo se lo score nel sessionStorage é maggiore della variabile 'best'
-                if (best < this.state.score) {
-                    sessionStorage.setItem('best_score', this.state.score + 1)
+                if (best < totalScore) {
+                    sessionStorage.setItem('best_score', totalScore + 1)
                 }
             }
+            this.setState({
+                score: totalScore
+            })
         }, 20)
 
 
@@ -163,12 +166,11 @@ class GameTable extends Component {
                         const foundY = rangeYChar.some(r => rangeYMenace.indexOf(r) >= 0)
 
                         //Se é stata trovata una collisione entro nel ciclo per calcolare il danno
+                        let newHp = this.state.hp
                         if (foundX && foundY) {
-
                             //Se la variabile 'damageRecived' é 'false' allora setto gli hp a -1
                             if (!this.damageRecived) {
-                                let newHp = this.state.hp - 1
-                                this.setState({ hp: newHp })
+                                newHp = this.state.hp - 1
 
                                 //Setto 'damageRecived' a true. Questo serve per evitare di prendere costantemente danno
                                 this.damageRecived = true
@@ -177,17 +179,21 @@ class GameTable extends Component {
                                 this.hitAudio.play()
                             }
                         }
+                        this.setState({ hp: newHp })
+
                     }
 
                     //Se gli HP sono a zero, setto il GameOver
+                    let gameoverCtrl = this.state.gameOver
                     if (this.state.hp == 0) {
-                        this.setState({
-                            gameOver: true
-                        })
 
+                        gameoverCtrl = true;
                         //Forzo lo stop della soundtrack
                         this.ostAudio.stop()
                     }
+                    this.setState({
+                        gameOver: gameoverCtrl
+                    })
 
                     //Se la posizione del nemico é al di fuori dello schermo, setto 
                     //le variabili a false e faccio clearInterval dell'attacco del nemico
@@ -357,10 +363,6 @@ class GameTable extends Component {
                                         callback={this.goToPage}
                                         className='bottoneGameOver' />
 
-                                    {/*   <UiButton label={'Gioca ancora'}
-                                        path={"/game"}
-                                        callback={this.goToPage}
-                                        className='bottoneGameOver' /> */}
                                 </div>
                             </div>
                         }
